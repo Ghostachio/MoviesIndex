@@ -1,6 +1,6 @@
-const Movie = ({ movie }) => {
+const Movie = ({ movie, onSelectMovie, id }) => {
   return (
-    <li key={movie.imdbID}>
+    <li onClick={() => onSelectMovie(id)}>
       <img src={movie.Poster} alt={`${movie.Title} poster`} />
       <h3>{movie.Title}</h3>
       <div>

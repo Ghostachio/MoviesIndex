@@ -9,12 +9,8 @@ const Movie = ({ movie, onSelectMovie, id }) => {
           <span>{movie.imdbRating}</span>
         </p>
         <p>
-          <span>🌟</span>
-          <span>{movie.userRating}</span>
-        </p>
-        <p>
           <span>⏳</span>
-          <span>{movie.runtime} min</span>
+          <span>{movie.Runtime}</span>
         </p>
       </div>
     </li>

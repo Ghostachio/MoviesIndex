@@ -2,8 +2,8 @@ const Statistics = ({ movies }) => {
   const average = (arr) => arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
   const avgImdbRating = average(movies.map((movie) => movie.imdbRating));
-  const avgUserRating = average(movies.map((movie) => movie.userRating));
-  const avgRuntime = average(movies.map((movie) => movie.runtime));
+
+  const avgRuntime = average(movies.map((movie) => movie?.Runtime?.split(" ")[0]));
 
   return (
     <div className="summary">
@@ -15,12 +15,9 @@ const Statistics = ({ movies }) => {
         </p>
         <p>
           <span>⭐️</span>
-          <span>{avgImdbRating}</span>
+          <span>{avgImdbRating.toFixed(2)}</span>
         </p>
-        <p>
-          <span>🌟</span>
-          <span>{avgUserRating}</span>
-        </p>
+
         <p>
           <span>⏳</span>
           <span>{avgRuntime} min</span>

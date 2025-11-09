@@ -1,11 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import Statistics from "./Statistics";
 import WatchedMoviesList from "./WatchedMoviesList";
 import MovieDetails from "./MovieDetails";
 
-const KEY = "f459ee4b";
-
-const WatchedMovies = ({ movies, selected }) => {
+const WatchedMovies = ({ movies, selected, onAddMovie, keyCode }) => {
   const [isOpen2, setIsOpen2] = useState(true);
   const [movieDetails, setMovieDetails] = useState({});
 
@@ -15,10 +14,9 @@ const WatchedMovies = ({ movies, selected }) => {
       //   setMovieDetails(null);
       //   return;
       // }
-      const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&i=${selected}`);
+      const res = await fetch(`http://www.omdbapi.com/?apikey=${keyCode}&i=${selected}`);
       const data = await res.json();
       setMovieDetails(data);
-      console.log(data.Title);
     };
     getSelectedMovie();
   }, [selected]);
@@ -31,7 +29,11 @@ const WatchedMovies = ({ movies, selected }) => {
 
       {isOpen2 &&
         (selected ? (
-          <MovieDetails movieDetails={movieDetails} />
+          <MovieDetails
+            movieDetails={movieDetails}
+            onAddMovie={onAddMovie}
+            movies={movies}
+          />
         ) : (
           <>
             <Statistics movies={movies} />

@@ -1,4 +1,6 @@
-const MovieDetails = ({ movieDetails }) => {
+const MovieDetails = ({ movieDetails, onAddMovie, movies }) => {
+  const isWatched = movies.map((movie) => movie.imdbID).includes(movieDetails.imdbID);
+
   return (
     <header>
       <img src={movieDetails.Poster} alt={`Poster of ${movieDetails.Title} movie`} />
@@ -12,6 +14,13 @@ const MovieDetails = ({ movieDetails }) => {
           <span>⭐️</span>
           {movieDetails.imdbRating} IMDb rating
         </p>
+        {!isWatched ? (
+          <button className="btn-add" onClick={() => onAddMovie(movieDetails)}>
+            + Add to list
+          </button>
+        ) : (
+          <h3>Movie Already added</h3>
+        )}
       </div>
     </header>
   );

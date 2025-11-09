@@ -3,7 +3,7 @@ const Header = ({ movies, onSetQuery, query }) => {
     <nav className="nav-bar">
       <div className="logo">
         <span role="img">🍿</span>
-        <h1>usePopcorn</h1>
+        <h1>Movie Index</h1>
       </div>
       <input
         className="search"
